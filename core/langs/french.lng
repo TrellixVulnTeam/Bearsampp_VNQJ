@@ -120,7 +120,7 @@ webgrind = "Webgrind"
 
 ; Tools
 composer = "Composer"
-consolez = "ConsoleZ"
+conemu = "ConEmu"
 ghostscript = "Ghostscript"
 git = "Git"
 ngrok = "ngrok"

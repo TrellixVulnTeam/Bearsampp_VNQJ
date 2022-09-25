@@ -121,7 +121,7 @@ class Lang
 
     // Tools
     const COMPOSER = 'composer';
-    const CONSOLEZ = 'consolez';
+    const CONEMU = 'conemu';
     const GHOSTSCRIPT = 'ghostscript';
     const GIT = 'git';
     const NGROK = 'ngrok';
@@ -472,7 +472,7 @@ class Lang
 
             // Tools
             self::COMPOSER,
-            self::CONSOLEZ,
+            self::CONEMU,
             self::GIT,
             self::NGROK,
             self::PERL,

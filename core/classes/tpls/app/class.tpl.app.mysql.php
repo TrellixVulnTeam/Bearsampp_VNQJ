@@ -64,10 +64,10 @@ class TplAppMysql
             $resultActions .= $tplDebug[TplApp::SECTION_CONTENT];
 
             // Console
-            $resultItems .= TplAestan::getItemConsoleZ(
+            $resultItems .= TplAestan::getItemConEmu(
                 $bearsamppLang->getValue(Lang::CONSOLE),
-                TplAestan::GLYPH_CONSOLEZ,
-                $bearsamppTools->getConsoleZ()->getTabTitleMysql()
+                TplAestan::GLYPH_CONEMU,
+                $bearsamppTools->getConEmu()->getTabTitleMysql()
             ) . PHP_EOL;
 
             // Conf

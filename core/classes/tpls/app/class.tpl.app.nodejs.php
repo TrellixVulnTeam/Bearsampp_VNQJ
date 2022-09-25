@@ -48,10 +48,10 @@ class TplAppNodejs
             $resultActions .= $tplVersions[TplApp::SECTION_CONTENT];
 
             // Console
-            $resultItems .= TplAestan::getItemConsoleZ(
+            $resultItems .= TplAestan::getItemConEmu(
                 $bearsamppLang->getValue(Lang::CONSOLE),
-                TplAestan::GLYPH_CONSOLEZ,
-                $bearsamppTools->getConsoleZ()->getTabTitleNodejs()
+                TplAestan::GLYPH_CONEMU,
+                $bearsamppTools->getConEmu()->getTabTitleNodejs()
             ) . PHP_EOL;
 
             // Conf

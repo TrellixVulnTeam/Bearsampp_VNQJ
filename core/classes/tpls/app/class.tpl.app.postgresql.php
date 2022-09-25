@@ -64,10 +64,10 @@ class TplAppPostgresql
             $resultActions .= $tplDebug[TplApp::SECTION_CONTENT];
 
             // Console
-            $resultItems .= TplAestan::getItemConsoleZ(
+            $resultItems .= TplAestan::getItemConEmu(
                 $bearsamppLang->getValue(Lang::CONSOLE),
-                TplAestan::GLYPH_CONSOLEZ,
-                $bearsamppTools->getConsoleZ()->getTabTitlePostgresql()
+                TplAestan::GLYPH_CONEMU,
+                $bearsamppTools->getConEmu()->getTabTitlePostgresql()
             ) . PHP_EOL;
 
             // Conf

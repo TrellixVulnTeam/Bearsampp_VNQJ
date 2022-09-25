@@ -1,6 +1,6 @@
 <?php
 
-class TplConsoleZ
+class TplConEmu
 {
     const ICON_APP = 'app.ico';
     const ICON_POWERSHELL = 'powershell.ico';
@@ -32,7 +32,7 @@ class TplConsoleZ
             self::getTabsSection() . PHP_EOL .
             '</settings>';
 
-        file_put_contents($bearsamppTools->getConsoleZ()->getConf(), $result);
+        file_put_contents($bearsamppTools->getConEmu()->getConf(), $result);
     }
 
     private static function getConsoleSection()
@@ -42,8 +42,8 @@ class TplConsoleZ
         $sectionConsoleStart = self::getIncrStr(1) . '<console ' .
             'change_refresh="10" ' .
             'refresh="100" ' .
-            'rows="' . $bearsamppTools->getConsoleZ()->getRows() . '" ' .
-            'columns="' . $bearsamppTools->getConsoleZ()->getCols() . '" ' .
+            'rows="' . $bearsamppTools->getConEmu()->getRows() . '" ' .
+            'columns="' . $bearsamppTools->getConEmu()->getCols() . '" ' .
             'buffer_rows="2048" ' .
             'buffer_columns="0" ' .
             'shell="" ' .
@@ -82,7 +82,7 @@ class TplConsoleZ
             self::getIncrStr(2) . '</font>';
 
         $windowSection = self::getIncrStr(2) . '<window ' .
-            'title="ConsoleZ" ' .
+            'title="ConEmu" ' .
             'icon="" ' .
             'use_tab_icon="1" ' .
             'use_console_title="0" ' .
@@ -238,9 +238,9 @@ class TplConsoleZ
         global $bearsamppBs, $bearsamppTools;
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitleDefault(),
+            $bearsamppTools->getConEmu()->getTabTitleDefault(),
             self::ICON_APP,
-            $bearsamppTools->getConsoleZ()->getShell(),
+            $bearsamppTools->getConEmu()->getShell(),
             $bearsamppBs->getRootPath()
         ) . PHP_EOL;
     }
@@ -252,7 +252,7 @@ class TplConsoleZ
         $powerShellPath = Util::getPowerShellPath();
         if ($powerShellPath !== false) {
             return self::getTab(
-                $bearsamppTools->getConsoleZ()->getTabTitlePowershell(),
+                $bearsamppTools->getConEmu()->getTabTitlePowershell(),
                 self::ICON_POWERSHELL,
                 $powerShellPath,
                 $bearsamppBs->getRootPath()
@@ -266,13 +266,13 @@ class TplConsoleZ
     {
         global $bearsamppBins, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppBins->getPhp()->getPearExe() . '&quot; -V');
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppBins->getPhp()->getPearExe() . '&quot; -V');
         if (!file_exists($bearsamppBins->getPhp()->getPearExe())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppBins->getPhp()->getPearExe() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppBins->getPhp()->getPearExe() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitlePear(),
+            $bearsamppTools->getConEmu()->getTabTitlePear(),
             self::ICON_PEAR,
             $shell,
             $bearsamppBins->getPhp()->getSymlinkPath() . '/pear'
@@ -283,15 +283,15 @@ class TplConsoleZ
     {
         global $bearsamppBins, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppBins->getMysql()->getCliExe() . '&quot; -u' .
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppBins->getMysql()->getCliExe() . '&quot; -u' .
             $bearsamppBins->getMysql()->getRootUser() .
             ($bearsamppBins->getMysql()->getRootPwd() ? ' -p' : ''));
         if (!file_exists($bearsamppBins->getMysql()->getCliExe())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppBins->getMysql()->getCliExe() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppBins->getMysql()->getCliExe() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitleMysql(),
+            $bearsamppTools->getConEmu()->getTabTitleMysql(),
             self::ICON_DB,
             $shell,
             $bearsamppBins->getMysql()->getSymlinkPath()
@@ -302,15 +302,15 @@ class TplConsoleZ
     {
         global $bearsamppBins, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppBins->getMariadb()->getCliExe() . '&quot; -u' .
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppBins->getMariadb()->getCliExe() . '&quot; -u' .
             $bearsamppBins->getMariadb()->getRootUser() .
             ($bearsamppBins->getMariadb()->getRootPwd() ? ' -p' : ''));
         if (!file_exists($bearsamppBins->getMariadb()->getCliExe())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppBins->getMariadb()->getCliExe() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppBins->getMariadb()->getCliExe() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitleMariadb(),
+            $bearsamppTools->getConEmu()->getTabTitleMariadb(),
             self::ICON_DB,
             $shell,
             $bearsamppBins->getMariadb()->getSymlinkPath()
@@ -321,17 +321,17 @@ class TplConsoleZ
     {
         global $bearsamppBins, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppBins->getPostgresql()->getCliExe() . '&quot;' .
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppBins->getPostgresql()->getCliExe() . '&quot;' .
             ' -h 127.0.0.1' .
             ' -p ' . $bearsamppBins->getPostgresql()->getPort() .
             ' -U ' . $bearsamppBins->getPostgresql()->getRootUser() .
             ' -d postgres');
         if (!file_exists($bearsamppBins->getPostgresql()->getCliExe())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppBins->getPostgresql()->getCliExe() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppBins->getPostgresql()->getCliExe() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitlePostgresql(),
+            $bearsamppTools->getConEmu()->getTabTitlePostgresql(),
             self::ICON_DB,
             $shell,
             $bearsamppBins->getPostgresql()->getSymlinkPath()
@@ -342,13 +342,13 @@ class TplConsoleZ
     {
         global $bearsamppBs, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppTools->getGit()->getExe() . '&quot; --version');
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppTools->getGit()->getExe() . '&quot; --version');
         if (!file_exists($bearsamppTools->getGit()->getExe())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppTools->getGit()->getExe() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppTools->getGit()->getExe() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitleGit(),
+            $bearsamppTools->getConEmu()->getTabTitleGit(),
             self::ICON_GIT,
             $shell,
             $bearsamppBs->getWwwPath()
@@ -359,13 +359,13 @@ class TplConsoleZ
     {
         global $bearsamppBs, $bearsamppBins, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppBins->getNodejs()->getLaunch(). '&quot;');
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppBins->getNodejs()->getLaunch(). '&quot;');
         if (!file_exists($bearsamppBins->getNodejs()->getLaunch())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppBins->getNodejs()->getLaunch() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppBins->getNodejs()->getLaunch() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitleNodejs(),
+            $bearsamppTools->getConEmu()->getTabTitleNodejs(),
             self::ICON_NODEJS,
             $shell,
             $bearsamppBs->getWwwPath()
@@ -376,13 +376,13 @@ class TplConsoleZ
     {
         global $bearsamppBs, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppTools->getComposer()->getExe() . '&quot; -V');
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppTools->getComposer()->getExe() . '&quot; -V');
         if (!file_exists($bearsamppTools->getComposer()->getExe())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppTools->getComposer()->getExe() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppTools->getComposer()->getExe() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitleComposer(),
+            $bearsamppTools->getConEmu()->getTabTitleComposer(),
             self::ICON_COMPOSER,
             $shell,
             $bearsamppBs->getWwwPath()
@@ -393,13 +393,13 @@ class TplConsoleZ
     {
         global $bearsamppBs, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppTools->getPython()->getExe() . '&quot; -V');
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppTools->getPython()->getExe() . '&quot; -V');
         if (!file_exists($bearsamppTools->getPython()->getExe())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppTools->getPython()->getExe() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppTools->getPython()->getExe() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitlePython(),
+            $bearsamppTools->getConEmu()->getTabTitlePython(),
             self::ICON_PYTHON,
             $shell,
             $bearsamppBs->getWwwPath()
@@ -410,13 +410,13 @@ class TplConsoleZ
     {
         global $bearsamppBs, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppTools->getRuby()->getExe() . '&quot; -v');
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppTools->getRuby()->getExe() . '&quot; -v');
         if (!file_exists($bearsamppTools->getRuby()->getExe())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppTools->getRuby()->getExe() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppTools->getRuby()->getExe() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitleRuby(),
+            $bearsamppTools->getConEmu()->getTabTitleRuby(),
             self::ICON_RUBY,
             $shell,
             $bearsamppBs->getWwwPath()
@@ -427,13 +427,13 @@ class TplConsoleZ
     {
         global $bearsamppBs, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppTools->getYarn()->getExe() . '&quot; --version');
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppTools->getYarn()->getExe() . '&quot; --version');
         if (!file_exists($bearsamppTools->getYarn()->getExe())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppTools->getYarn()->getExe() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppTools->getYarn()->getExe() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitleYarn(),
+            $bearsamppTools->getConEmu()->getTabTitleYarn(),
             self::ICON_YARN,
             $shell,
             $bearsamppBs->getWwwPath()
@@ -444,13 +444,13 @@ class TplConsoleZ
     {
         global $bearsamppBs, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppTools->getPerl()->getExe() . '&quot; -v');
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppTools->getPerl()->getExe() . '&quot; -v');
         if (!file_exists($bearsamppTools->getPerl()->getExe())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppTools->getPerl()->getExe() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppTools->getPerl()->getExe() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitlePerl(),
+            $bearsamppTools->getConEmu()->getTabTitlePerl(),
             self::ICON_PERL,
             $shell,
             $bearsamppBs->getWwwPath()
@@ -461,13 +461,13 @@ class TplConsoleZ
     {
         global $bearsamppBs, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppTools->getGhostscript()->getExeConsole() . '&quot; -v');
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppTools->getGhostscript()->getExeConsole() . '&quot; -v');
         if (!file_exists($bearsamppTools->getGhostscript()->getExeConsole())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppTools->getGhostscript()->getExeConsole() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppTools->getGhostscript()->getExeConsole() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitleGhostscript(),
+            $bearsamppTools->getConEmu()->getTabTitleGhostscript(),
             self::ICON_GHOSTSCRIPT,
             $shell,
             $bearsamppBs->getWwwPath()
@@ -478,13 +478,13 @@ class TplConsoleZ
     {
         global $bearsamppBs, $bearsamppTools;
 
-        $shell = $bearsamppTools->getConsoleZ()->getShell('&quot;' . $bearsamppTools->getNgrok()->getExe() . '&quot; version');
+        $shell = $bearsamppTools->getConEmu()->getShell('&quot;' . $bearsamppTools->getNgrok()->getExe() . '&quot; version');
         if (!file_exists($bearsamppTools->getNgrok()->getExe())) {
-            $shell = $bearsamppTools->getConsoleZ()->getShell('echo ' . $bearsamppTools->getNgrok()->getExe() . ' not found...');
+            $shell = $bearsamppTools->getConEmu()->getShell('echo ' . $bearsamppTools->getNgrok()->getExe() . ' not found...');
         }
 
         return self::getTab(
-            $bearsamppTools->getConsoleZ()->getTabTitleNgrok(),
+            $bearsamppTools->getConEmu()->getTabTitleNgrok(),
             self::ICON_NGROK,
             $shell,
             $bearsamppBs->getWwwPath()

@@ -15,10 +15,10 @@ class TplAppPython
     {
         global $bearsamppLang, $bearsamppTools;
 
-        $resultItems = TplAestan::getItemConsoleZ(
+        $resultItems = TplAestan::getItemConEmu(
             $bearsamppLang->getValue(Lang::PYTHON_CONSOLE),
             TplAestan::GLYPH_PYTHON,
-            $bearsamppTools->getConsoleZ()->getTabTitlePython()
+            $bearsamppTools->getConEmu()->getTabTitlePython()
         ) . PHP_EOL;
 
         $resultItems .= TplAestan::getItemExe(

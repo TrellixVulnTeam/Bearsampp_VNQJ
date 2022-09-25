@@ -5,7 +5,7 @@ class Tools
     const TYPE = 'tools';
 
     private $composer;
-    private $consolez;
+    private $conemu;
     private $ghostscript;
     private $git;
     private $ngrok;
@@ -31,7 +31,7 @@ class Tools
     {
         return array(
             $this->getComposer(),
-            $this->getConsoleZ(),
+            $this->getConEmu(),
             $this->getGhostscript(),
             $this->getGit(),
             $this->getNgrok(),
@@ -51,12 +51,12 @@ class Tools
         return $this->composer;
     }
 
-    public function getConsoleZ()
+    public function getConEmu()
     {
-        if ($this->consolez == null) {
-            $this->consolez = new ToolConsoleZ('consolez', self::TYPE);
+        if ($this->conemu == null) {
+            $this->conemu = new ToolConEmu('conemu', self::TYPE);
         }
-        return $this->consolez;
+        return $this->conemu;
     }
 
     public function getGhostscript()

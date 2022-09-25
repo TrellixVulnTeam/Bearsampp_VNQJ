@@ -29,45 +29,45 @@ class TplAppTools
         $resultActions .= $tplPython[TplApp::SECTION_CONTENT] . PHP_EOL;
 
         // Composer
-        $resultItems .= TplAestan::getItemConsoleZ(
+        $resultItems .= TplAestan::getItemConEmu(
             $bearsamppLang->getValue(Lang::COMPOSER),
             TplAestan::GLYPH_COMPOSER,
-            $bearsamppTools->getConsoleZ()->getTabTitleComposer()
+            $bearsamppTools->getConEmu()->getTabTitleComposer()
         ) . PHP_EOL;
 
         // Ghostscript
-        $resultItems .= TplAestan::getItemConsoleZ(
+        $resultItems .= TplAestan::getItemConEmu(
             $bearsamppLang->getValue(Lang::GHOSTSCRIPT),
             TplAestan::GLYPH_GHOSTSCRIPT,
-            $bearsamppTools->getConsoleZ()->getTabTitleGhostscript()
+            $bearsamppTools->getConEmu()->getTabTitleGhostscript()
         ) . PHP_EOL;
 
         // Ngrok
-        $resultItems .= TplAestan::getItemConsoleZ(
+        $resultItems .= TplAestan::getItemConEmu(
             $bearsamppLang->getValue(Lang::NGROK),
             TplAestan::GLYPH_NGROK,
-            $bearsamppTools->getConsoleZ()->getTabTitleNgrok()
+            $bearsamppTools->getConEmu()->getTabTitleNgrok()
         ) . PHP_EOL;
 
         // Pear
-        $resultItems .= TplAestan::getItemConsoleZ(
+        $resultItems .= TplAestan::getItemConEmu(
             $bearsamppLang->getValue(Lang::PEAR),
             TplAestan::GLYPH_PEAR,
-            $bearsamppTools->getConsoleZ()->getTabTitlePear()
+            $bearsamppTools->getConEmu()->getTabTitlePear()
         ) . PHP_EOL;
 
         // Perl
-        $resultItems .= TplAestan::getItemConsoleZ(
+        $resultItems .= TplAestan::getItemConEmu(
             $bearsamppLang->getValue(Lang::PERL),
             TplAestan::GLYPH_PERL,
-            $bearsamppTools->getConsoleZ()->getTabTitlePerl()
+            $bearsamppTools->getConEmu()->getTabTitlePerl()
         ) . PHP_EOL;
 
         // Ruby
-        $resultItems .= TplAestan::getItemConsoleZ(
+        $resultItems .= TplAestan::getItemConEmu(
             $bearsamppLang->getValue(Lang::RUBY),
             TplAestan::GLYPH_RUBY,
-            $bearsamppTools->getConsoleZ()->getTabTitleRuby()
+            $bearsamppTools->getConEmu()->getTabTitleRuby()
         ) . PHP_EOL;
 
         // XDebugClient
@@ -78,10 +78,10 @@ class TplAppTools
         ) . PHP_EOL;
 
         // Yarn
-        $resultItems .= TplAestan::getItemConsoleZ(
+        $resultItems .= TplAestan::getItemConEmu(
             $bearsamppLang->getValue(Lang::YARN),
             TplAestan::GLYPH_YARN,
-            $bearsamppTools->getConsoleZ()->getTabTitleYarn()
+            $bearsamppTools->getConEmu()->getTabTitleYarn()
         ) . PHP_EOL;
 
         // KvFront
@@ -94,9 +94,9 @@ class TplAppTools
         $resultItems .= TplAestan::getItemSeparator() . PHP_EOL;
 
         // Console
-        $resultItems .= TplAestan::getItemConsoleZ(
+        $resultItems .= TplAestan::getItemConEmu(
             $bearsamppLang->getValue(Lang::CONSOLE),
-            TplAestan::GLYPH_CONSOLEZ
+            TplAestan::GLYPH_CONEMU
         ) . PHP_EOL;
 
         // HostsEditor

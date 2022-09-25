@@ -1,20 +1,17 @@
 <?php
 
-class ToolConsoleZ extends Module
+class ToolConEmu extends Module
 {
-    const ROOT_CFG_VERSION = 'consolezVersion';
+    const ROOT_CFG_VERSION = 'conemuVersion';
 
-    const LOCAL_CFG_EXE = 'consolezExe';
-    const LOCAL_CFG_CONF = 'consolezConf';
-    const LOCAL_CFG_LAUNCH_EXE = 'consolezLaunchExe';
-    const LOCAL_CFG_ROWS = 'consolezRows';
-    const LOCAL_CFG_COLS = 'consolezCols';
+    const LOCAL_CFG_EXE = 'conemuExe';
+    const LOCAL_CFG_CONF = 'conemuConf';
+    const LOCAL_CFG_LAUNCH_EXE = 'conemuLaunchExe';
 
     private $exe;
     private $launchExe;
     private $conf;
-    private $rows;
-    private $cols;
+
 
     public function __construct($id, $type) {
         Util::logInitClass($this);
@@ -25,7 +22,7 @@ class ToolConsoleZ extends Module
         global $bearsamppConfig, $bearsamppLang;
         Util::logReloadClass($this);
 
-        $this->name = $bearsamppLang->getValue(Lang::CONSOLEZ);
+        $this->name = $bearsamppLang->getValue(Lang::CONEMU);
         $this->version = $bearsamppConfig->getRaw(self::ROOT_CFG_VERSION);
         parent::reload($id, $type);
 
@@ -33,8 +30,6 @@ class ToolConsoleZ extends Module
             $this->exe = $this->symlinkPath . '/' . $this->bearsamppConfRaw[self::LOCAL_CFG_EXE];
             $this->launchExe = $this->symlinkPath . '/' . $this->bearsamppConfRaw[self::LOCAL_CFG_LAUNCH_EXE];
             $this->conf = $this->symlinkPath . '/' . $this->bearsamppConfRaw[self::LOCAL_CFG_CONF];
-            $this->rows = intval($this->bearsamppConfRaw[self::LOCAL_CFG_ROWS]);
-            $this->cols = intval($this->bearsamppConfRaw[self::LOCAL_CFG_COLS]);
         }
 
         if (!$this->enable) {
@@ -60,12 +55,6 @@ class ToolConsoleZ extends Module
         if (!is_file($this->conf)) {
             Util::logError(sprintf($bearsamppLang->getValue(Lang::ERROR_CONF_NOT_FOUND), $this->name . ' ' . $this->version, $this->conf));
         }
-        if (!is_numeric($this->rows) || $this->rows <= 0) {
-            Util::logError(sprintf($bearsamppLang->getValue(Lang::ERROR_INVALID_PARAMETER), self::LOCAL_CFG_ROWS, $this->rows));
-        }
-        if (!is_numeric($this->cols) || $this->cols <= 0) {
-            Util::logError(sprintf($bearsamppLang->getValue(Lang::ERROR_INVALID_PARAMETER), self::LOCAL_CFG_COLS, $this->cols));
-        }
     }
 
     public function setVersion($version) {
@@ -85,14 +74,6 @@ class ToolConsoleZ extends Module
 
     public function getConf() {
         return $this->conf;
-    }
-
-    public function getRows() {
-        return $this->rows;
-    }
-
-    public function getCols() {
-        return $this->cols;
     }
 
     public function getShell($args = null) {

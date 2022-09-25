@@ -88,9 +88,9 @@
             <span><?php echo $bearsamppLang->getValue(Lang::COMPOSER); ?></span>
           </span>
           <span class="list-group-item">
-            <a href="<?php echo Util::getWebsiteUrl('module/consolez', '#releases'); ?>" target="_blank" title="<?php echo $bearsamppLang->getValue(Lang::DOWNLOAD_MORE); ?>"><span style="float:right;margin-left:8px;"><i class="fa fa-download"></i></span></a>
-            <span style="float:right;font-size: 1em" class="badge text-bg-primary"><?php echo $bearsamppTools->getConsoleZ()->getVersion(); ?></span>
-            <span><?php echo $bearsamppLang->getValue(Lang::CONSOLEZ); ?></span>
+            <a href="<?php echo Util::getWebsiteUrl('module/conemu', '#releases'); ?>" target="_blank" title="<?php echo $bearsamppLang->getValue(Lang::DOWNLOAD_MORE); ?>"><span style="float:right;margin-left:8px;"><i class="fa fa-download"></i></span></a>
+            <span style="float:right;font-size: 1em" class="badge text-bg-primary"><?php echo $bearsamppTools->getConEmu()->getVersion(); ?></span>
+            <span><?php echo $bearsamppLang->getValue(Lang::CONEMU); ?></span>
           </span>
           <span class="list-group-item">
             <a href="<?php echo Util::getWebsiteUrl('module/ghostscript', '#releases'); ?>" target="_blank" title="<?php echo $bearsamppLang->getValue(Lang::DOWNLOAD_MORE); ?>"><span style="float:right;margin-left:8px;"><i class="fa fa-download"></i></span></a>

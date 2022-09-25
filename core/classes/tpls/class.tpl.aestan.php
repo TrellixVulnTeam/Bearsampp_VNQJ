@@ -2,7 +2,7 @@
 
 class TplAestan
 {
-    const GLYPH_CONSOLEZ = 0;
+    const GLYPH_CONEMU = 0;
     const GLYPH_ADD = 1;
     const GLYPH_FOLDER_OPEN = 2;
     const GLYPH_FOLDER_CLOSE = 3;
@@ -70,27 +70,38 @@ class TplAestan
         return 'Type: separator';
     }
 
-    public static function getItemConsoleZ($caption, $glyph, $id = null, $title = null, $initDir = null, $command = null)
+    public static function getItemConEmu($caption, $glyph, $id = null, $title = null, $initDir = null, $command = null)
     {
         global $bearsamppTools;
 
         $args = '';
+
+        /* Specifies a startup tab type. Tab must be defined in ConsoleZ settings. ( ConsoleZ )  For example, ruby, python, yarn, etc... */
+       /*
         if ($id != null) {
             $args .= ' -t ""' . $id . '""';
         }
+       */
+        /* Window title */
         if ($title != null) {
-            $args .= ' -w ""' . $title . '""';
+            $args .= ' -Title ""' . $title . '""';
         }
+        /* Startup dir */
         if ($initDir != null) {
-            $args .= ' -d ""' . $initDir . '""';
+            $args .= ' -Dir ""' . $initDir . '""';
         }
+        /* Appends arguments to the startup shell command line. Do not confuse with a command that you type in the shell! ( ConsoleZ ) */
         if ($command != null) {
             $args .= ' -r ""' . $command . '""';
+        }
+        /* Icon to display */
+        if ($glyph != null) {
+            $args .= '-Icon ""' . $glyph . '""';
         }
 
         return self::getItemExe(
             $caption,
-            $bearsamppTools->getConsoleZ()->getExe(),
+            $bearsamppTools->getConEmu()->getExe(),
             $glyph,
             $args
         );

@@ -28,8 +28,8 @@ class ActionReload
         // Process bearsampp.ini
         file_put_contents($bearsamppBs->getIniFilePath(), Util::utf8ToCp1252(TplApp::process()));
 
-        // Process ConsoleZ config
-        TplConsoleZ::process();
+        // Process ConEmu config
+        TplConEmu::process();
 
         // Process Gitlist config
         TplGitlist::process();

@@ -735,12 +735,12 @@ class Util
             );
         }
 
-        // ConsoleZ
-        $folderList = self::getFolderList($bearsamppTools->getConsoleZ()->getRootPath());
+        // ConEmu
+        $folderList = self::getFolderList($bearsamppTools->getConEmu()->getRootPath());
         foreach ($folderList as $folder) {
             $paths[] = array(
-                'path' => $bearsamppTools->getConsoleZ()->getRootPath() . '/' . $folder,
-                'includes' => array('console.xml', '.ini', '.btm'),
+                'path' => $bearsamppTools->getConEmu()->getRootPath() . '/' . $folder,
+                'includes' => array('ConEmu.xml', '.ini', '.btm'),
                 'recursive' => true
             );
         }
